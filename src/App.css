@@ -1,3 +1,9 @@
 body {
 	margin: 0;
 }
+@font-face {
+	font-family: "MonsterHuntertype2";
+	src: url("fonts/Monster-hunter-type-2.ttf");
+	font-weight: normal;
+	font-style: normal;
+}
