@@ -4,14 +4,6 @@
 	font-weight: normal;
 	font-style: normal;
 }
-.logoContainer {
-	height: 150px;
-	width: 250px;
-	position: absolute;
-}
-.logo {
-	height: 100%;
-}
 .videomhw {
 	position: fixed;
 	right: 0;

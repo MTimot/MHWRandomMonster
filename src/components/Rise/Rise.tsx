@@ -1,11 +1,16 @@
+import { useLoaderData } from "react-router-dom";
 import "./rise.css";
-interface monsterinterface {
-	monster: {
-		name: string;
-		iconsrc: string;
-	};
-}
-function Rise({ monster, setMonsterRiseIndex, weapon, setWeaponRiseIndex }) {
+import { useState } from "react";
+import weaponTab from "../../assets/weaponTab";
+
+function Rise() {
+	const monster = useLoaderData();
+	console.log(monster);
+
+	const [monsterIndex, setMonsterIndex] = useState(0);
+	const [weaponIndex, setWeaponIndex] = useState(0);
+
+	const weapon = weaponTab;
 	function getRandomIntMonster() {
 		return Math.floor(Math.random() * 78);
 	}
@@ -13,8 +18,8 @@ function Rise({ monster, setMonsterRiseIndex, weapon, setWeaponRiseIndex }) {
 		return Math.floor(Math.random() * 14);
 	}
 	function handleClick() {
-		setMonsterRiseIndex(getRandomIntMonster);
-		setWeaponRiseIndex(getRandomIntWeapon);
+		setMonsterIndex(getRandomIntMonster);
+		setWeaponIndex(getRandomIntWeapon);
 	}
 	return (
 		<>
@@ -25,29 +30,25 @@ function Rise({ monster, setMonsterRiseIndex, weapon, setWeaponRiseIndex }) {
 				loop
 				className="videomhw"
 			/>
-			<div className="logoContainer">
-				<img
-					className="logo"
-					src="/Monster_Hunter_World_Logo.png"
-					alt="Logo de Monster Hunter Rise"
-				/>
-			</div>
-			<main>
-				<h1>MONSTER RANDOMIZER</h1>
 
+			<main>
 				<h2>
-					{monster.name} with {weapon.name}
+					{monster[monsterIndex].name} with {weapon[weaponIndex].name}
 				</h2>
 				<div className="bothicons">
 					<div className="icon-placeholder">
 						<img
 							className="monster-icon"
-							src={monster.iconsrc}
+							src={monster[monsterIndex].iconsrc}
 							alt="CA MARCHE PAS"
 						/>
 					</div>
 					<div className="weapon-container">
-						<img className="weaponimg" src={weapon.iconsrc} alt={weapon.name} />
+						<img
+							className="weaponimg"
+							src={weapon[weaponIndex].iconsrc}
+							alt={weapon[weaponIndex].name}
+						/>
 					</div>
 				</div>
 				<button type="button" id="chassonsbutton" onClick={handleClick}>

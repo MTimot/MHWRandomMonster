@@ -1,12 +1,12 @@
 import "./main.css";
-import { Link } from "react-router-dom";
-interface monsterinterface {
-	monster: {
-		name: string;
-		iconsrc: string;
-	};
-}
-function Main({ monster, setMonsterIndex, weapon, setWeaponIndex }) {
+import { useLoaderData } from "react-router-dom";
+import { useState } from "react";
+import weaponTab from "../../assets/weaponTab";
+function Main() {
+	const monster = useLoaderData();
+	const [monsterIndex, setMonsterIndex] = useState(0);
+	const [weaponIndex, setWeaponIndex] = useState(0);
+	const weapon = weaponTab;
 	function getRandomIntMonster() {
 		return Math.floor(Math.random() * 71);
 	}
@@ -26,31 +26,24 @@ function Main({ monster, setMonsterIndex, weapon, setWeaponIndex }) {
 				loop
 				className="videomhw"
 			/>
-			<div className="logoContainer">
-				{/* <Link to="/rise">
-					<img
-						className="logo"
-						src="/Monster_Hunter_Rise_Logo.png"
-						alt="Logo de Monster Hunter Rise"
-					/>
-				</Link> */}
-			</div>
 			<main>
-				<h1>MONSTER RANDOMIZER</h1>
-
 				<h2>
-					{monster.name} with {weapon.name}
+					{monster[monsterIndex].name} with {weapon[weaponIndex].name}
 				</h2>
 				<div className="bothicons">
 					<div className="icon-placeholder">
 						<img
 							className="monster-icon"
-							src={monster.iconsrc}
+							src={monster[monsterIndex].iconsrc}
 							alt="CA MARCHE PAS"
 						/>
 					</div>
 					<div className="weapon-container">
-						<img className="weaponimg" src={weapon.iconsrc} alt={weapon.name} />
+						<img
+							className="weaponimg"
+							src={weapon[weaponIndex].iconsrc}
+							alt={weapon[weaponIndex].name}
+						/>
 					</div>
 				</div>
 				<button type="button" id="chassonsbutton" onClick={handleClick}>
