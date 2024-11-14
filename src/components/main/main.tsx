@@ -6,7 +6,14 @@ function Main() {
 	const monster = useLoaderData();
 	const [monsterIndex, setMonsterIndex] = useState(0);
 	const [weaponIndex, setWeaponIndex] = useState(0);
+	const [isHovering, setIsHovering] = useState(false);
 	const weapon = weaponTab;
+	function handleMouseEnter() {
+		setIsHovering(!isHovering);
+	}
+	function handleMouseLeave() {
+		setIsHovering(!isHovering);
+	}
 	function getRandomIntMonster() {
 		return Math.floor(Math.random() * 71);
 	}
@@ -40,12 +47,22 @@ function Main() {
 					</div>
 					<div className="weapon-container">
 						<img
+							onMouseEnter={handleMouseEnter}
+							onMouseLeave={handleMouseLeave}
 							className="weaponimg"
 							src={weapon[weaponIndex].iconsrc}
 							alt={weapon[weaponIndex].name}
 						/>
+						{isHovering ? (
+							<div className="weapon-description">
+								{weapon[weaponIndex].desc}
+							</div>
+						) : (
+							""
+						)}
 					</div>
 				</div>
+
 				<button type="button" id="chassonsbutton" onClick={handleClick}>
 					Chassons!!
 				</button>

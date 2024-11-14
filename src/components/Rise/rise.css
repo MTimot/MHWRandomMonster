@@ -4,6 +4,7 @@
 	font-weight: normal;
 	font-style: normal;
 }
+
 .videomhw {
 	position: fixed;
 	right: 0;
@@ -20,10 +21,10 @@ h1 {
 #chassonsbutton:hover {
 	background-color: rgb(21, 90, 21);
 }
-.icon-placeholder {
+.icon-placeholder2 {
 	height: 400px;
 	width: 400px;
-	background-color: #a39281;
+	background-color: #456990;
 	border-radius: 5%;
 	margin-bottom: 24px;
 	display: flex;
@@ -53,4 +54,14 @@ main {
 
 .weaponimg {
 	width: 100%;
+}
+.weapon-description {
+	height: 200px;
+	width: 350px;
+	background-color: rgba(35, 23, 23, 0.5);
+	position: relative;
+	left: 200px;
+	bottom: 50px;
+	border-radius: 30px;
+	padding: 8px;
 }
